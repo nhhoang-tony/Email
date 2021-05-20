@@ -1,0 +1,113 @@
+body {
+    background-color: rgb(245, 245, 252);
+}
+
+textarea {
+    min-height: 400px;
+}
+
+.welcome_message {
+    font-size: 40px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left: 9%;
+}
+
+/* email date in email list*/
+.timestamp {
+    font-family: sans-serif;
+    float: right;
+    font-weight: normal;
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+/* email sender in email list*/
+.sender {
+    font-family: sans-serif;
+    float: left;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 3px;
+    margin-left: 5px;
+}
+
+/* email sender in email list */
+.subject {
+    font-family: sans-serif; 
+    float: left;
+    margin-left: 150px;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+/* email sender in email list */
+.archived {
+    font-family: sans-serif; 
+    float: left;
+    margin-left: 100px;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+/* each email in email list */
+.email_list {
+    border-style: solid;
+    margin-bottom: 5px;
+    background-color: white;
+}
+
+.email_list:hover {
+    border-style: dotted;
+    margin-bottom: 3px;
+}
+
+/* clear float for each email in email list */
+.clear_float {
+    clear: both;
+}
+
+/* each title in email view*/
+.title {
+    font-family: sans-serif;
+    text-align: left;
+    margin-left: 10px;
+    margin-bottom: 3px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.email_body {
+    font-family: sans-serif;
+    text-align: left;
+    margin-top: 5px;
+    font-size: 24px;
+    font-weight: normal;
+}
+
+.btn-primary {
+    margin-top: 1%;
+    margin-bottom: 2%;
+    height: 37px;
+    
+}
+
+.btn-outline-primary {
+    margin-left: 0.5%;
+}
+
+.user_email {
+    font-size: 20px;
+    margin-bottom: 1%;
+}
+
+.nav {
+    margin-top: 1%;
+    margin-left: 0.5%;
+}
+
+.message {
+    font-size: 18px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}

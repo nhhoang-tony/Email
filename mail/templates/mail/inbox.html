@@ -1,0 +1,73 @@
+{% extends "mail/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <div class="user_email">Signed in as <span><strong id="user_email">{{ request.user.email }}</strong></span></div>
+
+    <button class="btn btn-sm btn-outline-primary" id="inbox">Inbox</button>
+    <button class="btn btn-sm btn-outline-primary" id="compose">Compose</button>
+    <button class="btn btn-sm btn-outline-primary" id="sent">Sent</button>
+    <button class="btn btn-sm btn-outline-primary" id="archived">Archived</button>
+    <a class="btn btn-sm btn-outline-primary" href="{% url 'logout' %}">Log Out</a>
+    <button class="btn btn-sm btn-outline-primary" id="change_password">Change Password</button>
+    <form id="search-form">
+        {% csrf_token %}
+        <ul class="nav">
+            <li>
+                <div class="form-group">
+                    <input class="form-control" style="height: 32px; width: 422px;" id="query" placeholder="Search by subjects within current folder">
+                </div>
+            </li>
+            <li>
+                <input type="submit" style="margin-left: 18%;" class="btn btn-sm btn-outline-primary" value="Search"/>
+            </li>
+        </ul>
+    </form>
+    <hr>
+
+    <div id="emails-view">
+    </div>
+
+    <div id="emails-detail">
+        
+    </div>
+
+    <div id="compose-view">
+        <h3>New Email</h3>
+        <form id="compose-form">
+            {% csrf_token %}
+            <div class="form-group">
+                From: <input disabled class="form-control" value="{{ request.user.email }}">
+            </div>
+            <div class="form-group">
+                To: <input id="compose-recipients" placeholder="Recipients" class="form-control">
+            </div>
+            <div class="form-group">
+                <input class="form-control" id="compose-subject" placeholder="Subject">
+            </div>
+            <textarea class="form-control" id="compose-body" placeholder="Body"></textarea>
+            <input type="submit" class="btn btn-primary" value="Send"/>
+        </form>
+    </div>
+
+    <div id="change_password_view">
+        <h3>Change Password</h3>
+        <form id="change_password_form" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <input class="form-control" id="change_password_old" type="password" name="old_password" placeholder="Old Password" required="">
+            </div>
+            <div class="form-group">
+                <input class="form-control" id="change_password_new" type="password" name="password" placeholder="Password" required="">
+            </div>
+            <div class="form-group">
+                <input class="form-control" id="change_password_confirm" type="password" name="confirmation" placeholder="Confirm New Password" required="">
+            </div>
+            <input class="btn btn-primary" type="submit" value="Change">
+        </form>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'mail/inbox.js' %}"></script>
+{% endblock %}
