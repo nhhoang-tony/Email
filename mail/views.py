@@ -75,6 +75,7 @@ def compose(request):
 
     return JsonResponse({"message": "Email sent successfully."}, status=201)
 
+
 @login_required
 def mailbox(request, mailbox):
 
@@ -97,6 +98,7 @@ def mailbox(request, mailbox):
     # Return emails in reverse chronologial order
     emails = emails.order_by("-timestamp").all()
     return JsonResponse([email.serialize() for email in emails], safe=False)
+
 
 @csrf_protect
 @login_required
@@ -203,7 +205,7 @@ def register(request):
                 "message": "Passwords must match."
             })
 
-        # ensure no empty email or password 
+        # ensure no empty email or password
         if email == "" or password == "":
             return render(request, "mail/register.html", {
                 "message": "Email or passwords must not be empty."
@@ -220,31 +222,35 @@ def register(request):
             })
         login(request, user)
 
-        welcome = Email.objects.create(user=User.objects.get(email='tony@tonymail.com'), \
-            sender=User.objects.get(email='tony@tonymail.com'), \
-            subject="Let's get started", \
-            body="Get started by replying to this email, send yourself an email, or send us an email to any of the following email addresses: tony@tonymail.com, tina@tonymail.com, alex@tonymail.com and we will get back to you as soon as possible.")
+        welcome = Email.objects.create(user=User.objects.get(email='tony@tonymail.com'),
+                                       sender=User.objects.get(
+                                           email='tony@tonymail.com'),
+                                       subject="Let's get started",
+                                       body="Get started by replying to this email, send yourself an email, or send us an email to any of the following email addresses: tony@tonymail.com, tina@tonymail.com, alex@tonymail.com and we will get back to you as soon as possible.")
         welcome.recipients.add(user)
         welcome.save()
 
-        welcome = Email.objects.create(user=user, \
-            sender=User.objects.get(email='tony@tonymail.com'), \
-            subject="Let's get started", \
-            body="Get started by replying to this email, send yourself an email, or send us an email to any of the following email addresses: tony@tonymail.com, tina@tonymail.com, alex@tonymail.com and we will get back to you as soon as possible.")
+        welcome = Email.objects.create(user=user,
+                                       sender=User.objects.get(
+                                           email='tony@tonymail.com'),
+                                       subject="Let's get started",
+                                       body="Get started by replying to this email, send yourself an email, or send us an email to any of the following email addresses: tony@tonymail.com, tina@tonymail.com, alex@tonymail.com and we will get back to you as soon as possible.")
         welcome.recipients.add(user)
         welcome.save()
 
-        welcome = Email.objects.create(user=User.objects.get(email='tony@tonymail.com'), \
-            sender=User.objects.get(email='tony@tonymail.com'), \
-            subject="Welcome to Tony's mail", \
-            body="Thank you for choosing Tony's mail. We hope you enjoy our services.")
+        welcome = Email.objects.create(user=User.objects.get(email='tony@tonymail.com'),
+                                       sender=User.objects.get(
+                                           email='tony@tonymail.com'),
+                                       subject="Welcome to Tony's mail",
+                                       body="Thank you for choosing Tony's mail. We hope you enjoy our services.")
         welcome.recipients.add(user)
         welcome.save()
 
-        welcome = Email.objects.create(user=user, \
-            sender=User.objects.get(email='tony@tonymail.com'), \
-            subject="Welcome to Tony's mail", \
-            body="Thank you for choosing Tony's mail. We hope you enjoy our services.")
+        welcome = Email.objects.create(user=user,
+                                       sender=User.objects.get(
+                                           email='tony@tonymail.com'),
+                                       subject="Welcome to Tony's mail",
+                                       body="Thank you for choosing Tony's mail. We hope you enjoy our services.")
         welcome.recipients.add(user)
         welcome.save()
 
@@ -253,6 +259,8 @@ def register(request):
         return render(request, "mail/register.html")
 
 # allow users to change password
+
+
 def change_password(request):
     # only allow authenticated user to change password
     if request.user.is_authenticated:
