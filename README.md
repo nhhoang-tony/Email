@@ -1,6 +1,6 @@
 # <a href="https://email.tonynguyen61.com" target="_blank" rel="noopener noreferrer">Use</a>
 
-# An email service
+# An email service where you can send email to other people within the service
 
 ## To run the email service locally
 
@@ -14,7 +14,7 @@
 
 5. Run `python manage.py runserver` to start the email service and start communicating with people.
 
-# Afternatively, run the email service locally via Docker
+## Afternatively, run the email service locally via Docker
 
 1. Ensure you have Docker installed on your system. If not, follow this guide here to install `https://docs.docker.com/engine/install/`
 
