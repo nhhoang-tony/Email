@@ -1,0 +1,24 @@
+{
+  "builds": [
+    {
+      "src": "project3/wsgi.py",
+      "use": "@vercel/python",
+      "config": { "maxLambdaSize": "15mb", "runtime": "python3" }
+    },
+    {
+      "src": "build_files.sh",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "staticfiles_build" }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "project3/wsgi.py"
+    },
+    {
+      "src": "mail/static/(.*)",
+      "dest": "mail/static/$1"
+    }
+  ]
+}
